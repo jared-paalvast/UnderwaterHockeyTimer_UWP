@@ -1,0 +1,39 @@
+﻿<Page
+    x:Class="UnderwaterHockeyTimer.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UnderwaterHockeyTimer"
+    xmlns:controls="using:Microsoft.UI.Xaml.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <ScrollViewer FontFamily="Consolas" FontSize="18">
+        <StackPanel Background="#414141" Padding="20" Spacing="10">
+            <TextBlock Text="General App Settings"/>
+            <TextBlock Text="Goal Edit" Margin="0,20,0,0"/>
+            <StackPanel Orientation="Horizontal">
+                <controls:NumberBox x:Name="nmbxGoalsWhite" Value="0" SpinButtonPlacementMode="Inline" SmallChange="1" HorizontalAlignment="Left"  IsTabStop="False"/>
+                <TextBlock Text="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <controls:NumberBox x:Name="nmbxGoalsBlack" Value="0" SpinButtonPlacementMode="Inline" SmallChange="1" HorizontalAlignment="Left" IsTabStop="False"/>
+                <TextBlock Text="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0"/>
+            </StackPanel>
+            <TextBlock Text="Catch-up time" Margin="0,20,0,0"/>
+            <StackPanel Orientation="Horizontal">
+                <controls:NumberBox x:Name="nmbxCatchup" Value="0" Margin="0,0,20,0" IsTabStop="False"/>
+                <Button x:Name="btnUpdateCatchUpTime" Content="Update catch-up time" IsTabStop="False"/>
+            </StackPanel>
+            <TextBlock Text="Check box to enable" Margin="0,20,0,0"/>
+            <CheckBox x:Name="chkTeamTimeout" Content="Team Timeout" Height="20" IsTabStop="False"/>
+            <CheckBox x:Name="chkSuddenDeath" Content="Sudden Death" Height="20" IsTabStop="False"/>
+            <CheckBox x:Name="chkCapScore" Content="Cap Number Scores" IsTabStop="False"/>
+            <TextBlock Text="Select buzzer sound" Margin="0,20,0,0"/>
+            <RadioButton x:Name="rdoBuzzerSoundOne" Content="Sound One"/>
+            <RadioButton x:Name="rdoBuzzerSoundTwo" Content="Sound Two"/>
+            <RadioButton x:Name="rdoCustomBuzzerSound" Content="Custom Buzzer Sound (File selection prompt will show)"/>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

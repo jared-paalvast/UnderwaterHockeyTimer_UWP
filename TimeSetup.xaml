@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="UnderwaterHockeyTimer.TimeSetup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UnderwaterHockeyTimer"
+    xmlns:controls="using:Microsoft.UI.Xaml.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <ScrollViewer FontFamily="Consolas" FontSize="18">
+        <StackPanel Background="#414141" Padding="20" Spacing="10">
+            <TextBlock Text="Game timer set-up" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Text="Set game time:" Margin="0,20,0,0"/>
+            <TimePicker x:Name="tmpkFirstGame"   Width="400" IsTabStop="False"/>
+            <TextBlock Text="Game half length" Margin="0,20,0,0"/>
+            <StackPanel Orientation="Horizontal" >
+                <controls:NumberBox x:Name="nmbxGameHalfLength" SpinButtonPlacementMode="Inline" SmallChange="1" HorizontalAlignment="Left" IsTabStop="False"/>
+                <TextBlock Text="(Minutes)" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0"/>
+            </StackPanel>
+            <TextBlock Text="Game halves" Margin="0,20,0,0"/>
+            <controls:NumberBox x:Name="nmbxGameHalves" SpinButtonPlacementMode="Inline" SmallChange="1" HorizontalAlignment="Left" IsTabStop="False"/>
+            <TextBlock Text="Half-time length" Margin="0,20,0,0"/>
+            <StackPanel Orientation="Horizontal">
+                <controls:NumberBox x:Name="nmbxHalfTimeLength" SpinButtonPlacementMode="Inline" SmallChange="1" HorizontalAlignment="Left" IsTabStop="False"/>
+                <TextBlock Text="(Minutes)" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0"/>
+            </StackPanel>
+            <TextBlock Text="Time between games" Margin="0,20,0,0"/>
+            <StackPanel Orientation="Horizontal">
+                <controls:NumberBox x:Name="nmbxTimeBetweenMin" SpinButtonPlacementMode="Inline" SmallChange="1" HorizontalAlignment="Left" IsTabStop="False"/>
+                <TextBlock Text="Minimum (Minutes)" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <controls:NumberBox x:Name="nmbxTimeBetweenMax" SpinButtonPlacementMode="Inline" SmallChange="1" HorizontalAlignment="Left" IsTabStop="False"/>
+                <TextBlock Text="Maximum (Minutes)" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0"/>
+            </StackPanel>
+            <TextBlock Text="Game number start" Margin="0,20,0,0"/>
+            <controls:NumberBox x:Name="nmbxGameNoStart" SpinButtonPlacementMode="Inline" SmallChange="1" HorizontalAlignment="Left" IsTabStop="False"/>
+            <TextBlock Text="Game number increment" Margin="0,20,0,0"/>
+            <controls:NumberBox x:Name="nmbxGameNoIncrement" SpinButtonPlacementMode="Inline" SmallChange="1" HorizontalAlignment="Left" IsTabStop="False"/>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

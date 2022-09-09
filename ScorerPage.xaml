@@ -1,0 +1,85 @@
+﻿<Page
+    x:Class="UnderwaterHockeyTimer.ScorerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UnderwaterHockeyTimer"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="#414141" x:Name="BackgroundGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="18*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Rectangle x:Name="rtngScoreBlack" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="3" Stroke="Black" StrokeThickness="5" Fill="Black"/>
+            <TextBlock x:Name="txtScoreBlack" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="3" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+            <Rectangle x:Name="rtngScoreWhite" Grid.Column="8" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="3" Stroke="Black" StrokeThickness="5" Fill="White"/>
+            <TextBlock x:Name="txtScoreWhite" Grid.Column="8" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="3" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <Rectangle x:Name="rtngGameNo" Grid.Column="5" Grid.Row="1" Stroke="Black" StrokeThickness="5" Fill="#FF9E9E9E"/>
+            <TextBlock x:Name="txtGameNo" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <Rectangle x:Name="rtngGameText" Grid.Column="4" Grid.ColumnSpan="3" Grid.Row="3" Stroke="Black" StrokeThickness="5" Fill="#FF9E9E9E"/>
+            <TextBlock x:Name="txtGameText" Grid.Column="4" Grid.ColumnSpan="3" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWholeWords"/>
+
+            <Rectangle x:Name="rtngGameTime" Grid.Column="4" Grid.ColumnSpan="3" Grid.Row="5" Stroke="Black" StrokeThickness="5" Fill="#FF9E9E9E"/>
+            <TextBlock x:Name="txtGameTime" Grid.Column="4" Grid.ColumnSpan="3" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <Rectangle x:Name="rtngCourtTime" Grid.Column="2" Grid.ColumnSpan="7" Grid.Row="7" Stroke="Black" StrokeThickness="5" Fill="#FF9E9E9E"/>
+            <TextBlock x:Name="txtCourtTime" Grid.Column="2" Grid.ColumnSpan="7" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button x:Name="btnGoalBlack" Content="Goal Black" Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsTabStop="False"/>
+            <Button x:Name="btnTimeBlack" Content="Team Time Black" Grid.Row="1" Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsTabStop="False"/>
+            <Button x:Name="btnRefTimeout" Content="Ref Time" Grid.Row="1" Grid.Column="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsTabStop="False"/>
+            <Button x:Name="btnTimeWhite" Content="Team Time White" Grid.Row="1" Grid.Column="7" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsTabStop="False"/>
+            <Button x:Name="btnGoalWhite" Content="Goal White" Grid.Row="1" Grid.Column="9" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsTabStop="False"/>
+        </Grid>
+    </Grid>
+</Page>
