@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Media;
-using Windows.UI;
-using Windows.UI.Xaml.Media;
+﻿using Windows.UI;
 
 namespace UnderwaterHockeyTimer
 {
@@ -30,12 +23,7 @@ namespace UnderwaterHockeyTimer
         public static bool RefTimeEnabled { get; set; } = false;
         public static bool TeamTimeEnabled { get; set; } = false;
         public static bool TeamTimeTaken { get; set; } = false;
-        public static bool CapScoreEnabled { get; set; } = false;
-        public static bool FilesEnabled { get; set; } = false;
-        public static bool GoalFilesEnabled { get; set; } = false;
-        public static bool GameNoFileEnabled { get; set; } = false;
-        public static bool GameTimeFileEnabled { get; set; } = false;
-        public static bool GameTextFileEnabled { get; set; } = false;
+        public static bool CapScoreEnabled { get; set; } = false;        
         public static bool JoystickGoalsEnabled { get; set; } = false;
         public static bool JoystickTeamTimeEnabled { get; set; } = false;
         public static bool JoystickRefTimeEnabled { get; set; } = false;

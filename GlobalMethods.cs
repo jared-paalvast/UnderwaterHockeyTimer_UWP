@@ -22,11 +22,11 @@ namespace UnderwaterHockeyTimer
             {
                 CapScoreDialog dialog = new CapScoreDialog();
                 await dialog.ShowAsync();
-                FileControl.WholeGameOutput($"{Colour} team goal awarded at | Scorer Cap Number: {dialog.Result} | Half: {GlobalVariables.GameText} | Game Time: {GameTime()} | {CourtTime()}");
+                FilesPage.WholeGameOutput($"{Colour} team goal awarded at | Scorer Cap Number: {dialog.Result} | Half: {GlobalVariables.GameText} | Game Time: {GameTime()} | {CourtTime()}");
             }
             else
             {
-                FileControl.WholeGameOutput($"{Colour} team timeout taken at | Half: {GlobalVariables.GameText} | Game Time: {GameTime()} | {CourtTime()}");
+                FilesPage.WholeGameOutput($"{Colour} team goal awarded at | Half: {GlobalVariables.GameText} | Game Time: {GameTime()} | {CourtTime()}");
             }
         }
         private static string TimeCalc(int sec, int min)
@@ -79,7 +79,7 @@ namespace UnderwaterHockeyTimer
                 {
                     GlobalVariables.GameText = GlobalVariables.GameTextTemp;
                     GlobalVariables.Colour = Color.FromArgb(255, 65, 65, 65);
-                    FileControl.WholeGameOutput(Environment.NewLine + $"Ref Time finished lasting: {GameTime()} | Until {CourtTime()}" + Environment.NewLine);
+                    FilesPage.WholeGameOutput($"Ref Time finished lasting: {GameTime()} | Until {CourtTime()}");
                     GlobalVariables.RefTimeEnabled = false;
                     GameTimerControl.tmrUp = false;
                     GameTimerControl.tmrDown = true;
@@ -87,7 +87,7 @@ namespace UnderwaterHockeyTimer
                 else
                 {
                     GlobalVariables.GameTextTemp = gameText;
-                    FileControl.WholeGameOutput(Environment.NewLine + $"Ref Time started at | Half: {GlobalVariables.GameText} | Game Time: {GameTime()} | {CourtTime()}" + Environment.NewLine);
+                    FilesPage.WholeGameOutput($"Ref Time started at | Half: {GlobalVariables.GameText} | Game Time: {GameTime()} | {CourtTime()}");
                     GlobalVariables.GameText = "Ref Time";
                     GlobalVariables.Colour = Color.FromArgb(255, 220, 0, 0);
                     GlobalVariables.RefTimeEnabled = true;

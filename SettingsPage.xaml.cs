@@ -1,17 +1,9 @@
-﻿using System;
+﻿using Microsoft.UI.Xaml.Controls;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls;
-using Windows.Storage;
-using Windows.Storage.Pickers;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace UnderwaterHockeyTimer
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class SettingsPage : Page
     {
         public SettingsPage()
@@ -30,13 +22,7 @@ namespace UnderwaterHockeyTimer
             chkCapScore.Checked += CheckChanged;
             chkCapScore.Unchecked += CheckChanged;
             nmbxGoalsBlack.ValueChanged += ValueChanged;
-            nmbxGoalsWhite.ValueChanged += ValueChanged;
-            rdoBuzzerSoundOne.Checked += RadioChanged;
-            rdoBuzzerSoundOne.Unchecked += RadioChanged;
-            rdoBuzzerSoundTwo.Checked += RadioChanged;
-            rdoBuzzerSoundTwo.Unchecked += RadioChanged;
-            rdoCustomBuzzerSound.Checked += RadioChanged;
-            rdoCustomBuzzerSound.Unchecked += RadioChanged;
+            nmbxGoalsWhite.ValueChanged += ValueChanged;            
         }
         private void InitialiseElements()
         {
@@ -44,40 +30,8 @@ namespace UnderwaterHockeyTimer
             nmbxGoalsBlack.Value = TeamBlack.Score;
             nmbxGoalsWhite.Value = TeamWhite.Score;
             chkSuddenDeath.IsChecked = GlobalVariables.SuddenDeath;
-            chkTeamTimeout.IsChecked = GlobalVariables.TeamTimeEnabled;
-            rdoBuzzerSoundOne.IsChecked = GlobalVariables.BuzzerSoundOneSet;
-            rdoBuzzerSoundTwo.IsChecked = GlobalVariables.BuzzerSoundTwoSet;
-            rdoCustomBuzzerSound.IsChecked = GlobalVariables.CustomBuzzerSoundSet;
-        }
-        private async void RadioChanged(object sender, object e)
-        {
-            RadioButton rdo = (RadioButton)sender;
-            if (rdo.Name == "rdoBuzzerSoundOne" && rdoBuzzerSoundOne.IsChecked.Value)
-            {
-
-            }
-            else if (rdo.Name == "rdoBuzzerSoundTwo" && rdoBuzzerSoundTwo.IsChecked.Value)
-            {
-
-            }
-            else if (rdo.Name == "rdoCustomBuzzerSound" && rdoCustomBuzzerSound.IsChecked.Value)
-            {
-                var openPicker = new FileOpenPicker();
-                openPicker.FileTypeFilter.Add(".mp3");
-                openPicker.FileTypeFilter.Add(".wav");
-                StorageFile file = await openPicker.PickSingleFileAsync();
-                if (file != null)
-                {
-                    SoundControl.SetCustomBuzzer(file.Path.ToString()); ;
-                }
-                else
-                {
-                    MessageBox.Show("Setting buzzer operation failed. Reseting to default sound.");
-                    rdoCustomBuzzerSound.IsChecked = false;
-                    rdoBuzzerSoundOne.IsChecked = true;
-                }
-            }
-        }
+            chkTeamTimeout.IsChecked = GlobalVariables.TeamTimeEnabled;            
+        }        
         private void ValueChanged(object sender, object e)
         {
             NumberBox numbox = (NumberBox)sender;

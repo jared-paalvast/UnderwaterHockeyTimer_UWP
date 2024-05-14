@@ -20,9 +20,8 @@ namespace UnderwaterHockeyTimer
             JoystickControl.OnLoad();
             InitialiseDisplayWindow();
             InitialiseButtons();
-            GameTimerControl.OnLoad();
-            SoundControl.OnLoad();
-            FileControl.CreateDirectories();
+            GameTimerControl.OnLoad();            
+            SoundControl.OnLoad();            
             CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
             Window.Current.SetTitleBar(titleBar);
             ContentFrame.Navigate(typeof(ScorerPage));

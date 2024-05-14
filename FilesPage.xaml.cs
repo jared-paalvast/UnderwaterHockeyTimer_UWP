@@ -1,101 +1,95 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using Windows.Storage;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
+using Windows.Storage.Pickers;
+using Windows.UI.Xaml.Controls;
 
 namespace UnderwaterHockeyTimer
 {
     public sealed partial class FilesPage : Page
     {
+        private static StorageFolder defaultFolder;
+        public static StorageFolder directoryMain;
+        private static string pathGameOutput;
         public FilesPage()
         {
             this.InitializeComponent();
             InitialiseEvents();
-            OnLoad();
+            DefaultFolderLocation();
+        }
+        private static async void DefaultFolderLocation()
+        {
+            defaultFolder = await StorageFolder.GetFolderFromPathAsync(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
         }
         private void InitialiseEvents()
         {
-            chkGameNumberTextOutput.Checked += CheckChanged;
-            chkGameNumberTextOutput.Unchecked += CheckChanged;
-            chkGameTextOutput.Checked += CheckChanged;
-            chkGameTextOutput.Unchecked += CheckChanged;
-            chkGameTimeOutput.Checked += CheckChanged;
-            chkGameTimeOutput.Unchecked += CheckChanged;
-            chkGoalTextOutput.Checked += CheckChanged;
-            chkGoalTextOutput.Unchecked += CheckChanged;
-            chkFilesEnabled.Checked += CheckChanged;
-            chkFilesEnabled.Unchecked += CheckChanged;
-            btnFileLocation.Click += ButtonClicked;
-        }
-        private void OnLoad()
-        {
-            chkFilesEnabled.IsChecked = GlobalVariables.FilesEnabled;
-            chkGameNumberTextOutput.IsChecked = GlobalVariables.GameNoFileEnabled;
-            chkGameTextOutput.IsChecked = GlobalVariables.GameTextFileEnabled;
-            chkGameTimeOutput.IsChecked = GlobalVariables.GameTimeFileEnabled;
-            chkGoalTextOutput.IsChecked = GlobalVariables.GoalFilesEnabled;
+            btnShowFileLocation.Click += ButtonClicked;
+            btnSetFileLocation.Click += ButtonClicked;
         }
         private void ButtonClicked(object sender, object e)
         {
             Button btn = (Button)sender;
-            if (btn.Name == "btnFileLocation")
-            {
-                MessageBox.Show($"Files are located as follows:\n{FileControl.directoryMain}");
-            }
+            switch (btn.Name)
+            {            
+                case "btnShowFileLocation":
+                    if (directoryMain != null)                    
+                        MessageBox.Show($"Files are located as follows:\n{directoryMain.Path}");
+                    else
+                        MessageBox.Show($"Files are located as follows:\n{defaultFolder.Path}");
+                    break;
+                case "btnSetFileLocation":
+                    SetFileLocation();
+                    break;
+                default:
+                    break;
+            }                   
         }
-        private void CheckChanged(object sender, object e)
+        private async void SetFileLocation()
         {
-            CheckBox chkbx = (CheckBox)sender;
-            if (chkbx.Name == "chkFilesEnabled")
-            {
-                if (chkFilesEnabled.IsChecked.Value)
-                {
-                    GlobalVariables.FilesEnabled = true;
-                    MessageBox.Show("File output has been enabled.");
-                }
-                else
-                {
-                    GlobalVariables.FilesEnabled = false;
-                    MessageBox.Show("File output has been disabled.");
-                }
-            }
-            else if (GlobalVariables.FilesEnabled)
-            {
-                switch (chkbx.Name)
-                {
-                    case "chkGameNumberTextOutput":
-                        GlobalVariables.GameNoFileEnabled = chkGameNumberTextOutput.IsChecked.Value;
-                        break;
-                    case "chkGameTextOutput":
-                        GlobalVariables.GameTextFileEnabled = chkGameTextOutput.IsChecked.Value;
-                        break;
-                    case "chkGameTimeOutput":
-                        GlobalVariables.GameTimeFileEnabled = chkGameTimeOutput.IsChecked.Value;
-                        break;
-                    case "chkGoalTextOutput":
-                        GlobalVariables.GoalFilesEnabled = chkGoalTextOutput.IsChecked.Value;
-                        break;
-                    default:
-                        break;
-                }
+            FolderPicker folderPicker = new FolderPicker();
+            folderPicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+            directoryMain = await folderPicker.PickSingleFolderAsync();
+            if (directoryMain != null)
+            {                
+                CreateDirectories(directoryMain);                
             }
             else
             {
-                MessageBox.Show("Files are currently not enabled.\nPlease check Files Enabled check box to enable file output");
+                MessageBox.Show("Nothing was selected. No changes have been made.");
+            }
+
+        }
+        public static async void CreateDirectories(StorageFolder folderLocation)
+        {
+            try
+            {
+                pathGameOutput = $"game{GlobalVariables.GameNumber}.txt";
+                await folderLocation.CreateFileAsync(pathGameOutput, CreationCollisionOption.OpenIfExists);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"File Control error code as follows.\nError: {e}");
             }
         }
+        public static async void WholeGameOutput(string text)
+        {
+            try
+            {
+                if (directoryMain != null)
+                {
+                    StorageFile myFile = await directoryMain.GetFileAsync(pathGameOutput);
+                    await FileIO.AppendTextAsync(myFile, text + Environment.NewLine);
+                }
+                else
+                {
+                    CreateDirectories(defaultFolder);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"File write error: {e}");
+                return;
+            }
+        }
+
     }
 }

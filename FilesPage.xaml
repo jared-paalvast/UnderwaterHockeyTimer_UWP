@@ -13,14 +13,10 @@
         <StackPanel Background="#414141" Padding="20" Spacing="10">
             <TextBlock Text="File Output Settings"/>
             <TextBlock Text="Click to display file location" Margin="0,20,0,0"/>
-            <Button x:Name="btnFileLocation" Content="Show File Location" IsTabStop="False"/>
-            <TextBlock Text="Check to enable" Margin="0,20,0,0"/>
-            <CheckBox x:Name="chkFilesEnabled" Content="Files Enabled" IsTabStop="False"/>
-            <TextBlock Text="Check to enable" Margin="0,20,0,0"/>
-            <CheckBox x:Name="chkGoalTextOutput" Content="Goals" IsTabStop="False"/>
-            <CheckBox x:Name="chkGameNumberTextOutput" Content="Game No" IsTabStop="False"/>
-            <CheckBox x:Name="chkGameTextOutput" Content="Game Half Text" IsTabStop="False"/>
-            <CheckBox x:Name="chkGameTimeOutput" Content="Game Time" IsTabStop="False"/>
+            <Button x:Name="btnShowFileLocation" Content="Show File Location" IsTabStop="False"/>
+            <TextBlock Text="Click to set file location" Margin="0,20,0,0"/>
+            <Button x:Name="btnSetFileLocation" Content="Set File Location" IsTabStop="False"/>
+            <TextBlock x:Name="txtCurrentFileLocation" Text=""/>
         </StackPanel>
     </ScrollViewer>
 </Page>

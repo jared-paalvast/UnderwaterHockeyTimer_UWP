@@ -133,7 +133,6 @@
     <Compile Include="CapScoreDialog.xaml.cs">
       <DependentUpon>CapScoreDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FileControl.cs" />
     <Compile Include="FilesPage.xaml.cs">
       <DependentUpon>FilesPage.xaml</DependentUpon>
     </Compile>
@@ -213,6 +212,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\CapScoreDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ScorerPage.xaml">
       <SubType>Designer</SubType>

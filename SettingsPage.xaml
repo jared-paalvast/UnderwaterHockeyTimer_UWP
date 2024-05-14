@@ -30,10 +30,6 @@
             <CheckBox x:Name="chkTeamTimeout" Content="Team Timeout" Height="20" IsTabStop="False"/>
             <CheckBox x:Name="chkSuddenDeath" Content="Sudden Death" Height="20" IsTabStop="False"/>
             <CheckBox x:Name="chkCapScore" Content="Cap Number Scores" IsTabStop="False"/>
-            <TextBlock Text="Select buzzer sound" Margin="0,20,0,0"/>
-            <RadioButton x:Name="rdoBuzzerSoundOne" Content="Sound One"/>
-            <RadioButton x:Name="rdoBuzzerSoundTwo" Content="Sound Two"/>
-            <RadioButton x:Name="rdoCustomBuzzerSound" Content="Custom Buzzer Sound (File selection prompt will show)"/>
         </StackPanel>
     </ScrollViewer>
 </Page>

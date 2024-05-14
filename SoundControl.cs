@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Media;
-using Windows.Media.Audio;
-using Windows.Media.Playback;
 using Windows.Media.Core;
+using Windows.Media.Playback;
 using Windows.UI.Xaml.Controls;
-using Windows.Storage;
 
 namespace UnderwaterHockeyTimer
 {

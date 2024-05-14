@@ -48,26 +48,25 @@ namespace UnderwaterHockeyTimer
             soundEnabled = true;
             tmrDown = true;
         }
-        private static void GameDetailsToFile()
+        public static string GameDetailsToFile()
         {
-            FileControl.WholeGameOutput($"Game No {GlobalVariables.GameNumber} details:" + newLine +
-                $"Game Half Length: {GlobalVariables.HalfLength}" + newLine + $"Game Half Time Length: {GlobalVariables.HalfTimeLength}" +
-                newLine + $"Time Between Games Max: {GlobalVariables.IntervalMax}" + newLine +
-                $"Time Between Games Min: {GlobalVariables.IntervalMin}" + newLine +
-                $"Ammount Of Halves: {GlobalVariables.AmmountOfHalves}" + newLine);
+            return ($"Game No {GlobalVariables.GameNumber} details:" + Environment.NewLine +
+                $"Game Half Length: {GlobalVariables.HalfLength}" + Environment.NewLine + $"Game Half Time Length: {GlobalVariables.HalfTimeLength}" +
+                Environment.NewLine + $"Time Between Games Max: {GlobalVariables.IntervalMax}" + Environment.NewLine +
+                $"Time Between Games Min: {GlobalVariables.IntervalMin}" + Environment.NewLine +
+                $"Ammount Of Halves: {GlobalVariables.AmmountOfHalves}");
         }
         private static void GameSelection()
         {
             if (GlobalVariables.CurrentGame == 1)/*First Half code*/
-            {
-                GameDetailsToFile();
+            {                
                 GlobalVariables.Colour = Color.FromArgb(255, 65, 65, 65);
                 GlobalVariables.GameText = "First Half";
                 GlobalMethods.ResetGoals();
                 GlobalMethods.ResetTeamTimeTaken();
                 GlobalVariables.Minutes = GlobalVariables.HalfLength;
-                GlobalVariables.CurrentGame = 2;
-                FileControl.WholeGameOutput(newLine + $"First Half started at Court Time: {GlobalMethods.CourtTime()}" + newLine);
+                GlobalVariables.CurrentGame = 2;                
+                FilesPage.WholeGameOutput(GameDetailsToFile() + Environment.NewLine + $"First Half started at {GlobalMethods.CourtTime()}");
             }
             else if (GlobalVariables.CurrentGame == 2)/*Half time code*/
             {
@@ -82,7 +81,7 @@ namespace UnderwaterHockeyTimer
                     GlobalVariables.Minutes = GlobalVariables.HalfLength;
                     GlobalVariables.GameText = "Half Time";
                     GlobalVariables.CurrentGame = 3;
-                    FileControl.WholeGameOutput(newLine + $"Half time started at Court Time: {GlobalMethods.CourtTime()}" + newLine);
+                    FilesPage.WholeGameOutput($"Half time started at {GlobalMethods.CourtTime()}");
                 }
             }
             else if (GlobalVariables.CurrentGame == 3)/*Second half code*/
@@ -92,7 +91,7 @@ namespace UnderwaterHockeyTimer
                 GlobalVariables.Minutes = GlobalVariables.HalfLength;
                 GlobalMethods.ResetTeamTimeTaken();
                 GlobalVariables.CurrentGame = 4;
-                FileControl.WholeGameOutput(newLine + $"Second Half started at Court Time: {GlobalMethods.CourtTime()}" + newLine);
+                FilesPage.WholeGameOutput($"Second Half started at {GlobalMethods.CourtTime()}");
             }
             else if (GlobalVariables.CurrentGame == 4)/*Endgame code*/
             {
@@ -118,7 +117,7 @@ namespace UnderwaterHockeyTimer
                 }
                 else if (GlobalVariables.CurrentGame == 6)/*Sudden death code*/
                 {
-                    FileControl.WholeGameOutput(newLine + $"SUDDEN DEATH started at Court Time: {GlobalMethods.CourtTime()}" + newLine);
+                    FilesPage.WholeGameOutput($"SUDDEN DEATH started at {GlobalMethods.CourtTime()}");
                     GlobalVariables.GameText = "SUDDEN DEATH";
                     tmrUp = true;
                     tmrDown = false;
@@ -128,7 +127,7 @@ namespace UnderwaterHockeyTimer
             {
                 GlobalVariables.CatchUpTime++;
                 GlobalVariables.Colour = Color.FromArgb(255, 220, 0, 0);
-                FileControl.WholeGameOutput($"Game No {GlobalVariables.GameNumber} finished at Court Time: {GlobalMethods.CourtTime()}" + newLine);
+                FilesPage.WholeGameOutput($"Game No {GlobalVariables.GameNumber} finished at {GlobalMethods.CourtTime()}");
                 GlobalVariables.GameText = "Game over!\nNext game in";
                 int numMax = GlobalVariables.IntervalMax * 60;
                 while (GlobalVariables.CatchUpTime > 0)

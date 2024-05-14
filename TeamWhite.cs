@@ -19,7 +19,7 @@ namespace UnderwaterHockeyTimer
                 int.TryParse(result.Id.ToString(), out int temp);
                 if (temp == 1)
                 {
-                    FileControl.WholeGameOutput($"White team timeout taken at | Half: {GlobalVariables.GameText} | Game Time: {GlobalMethods.GameTime()} | {GlobalMethods.CourtTime()}");
+                    FilesPage.WholeGameOutput($"White team timeout taken at | Half: {GlobalVariables.GameText} | Game Time: {GlobalMethods.GameTime()} | {GlobalMethods.CourtTime()}");
                     GlobalVariables.CatchUpTime += 61;
                     TeamTimeTaken = true;
                     GlobalVariables.TeamTimeTaken = true;
